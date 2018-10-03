@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">assignment_1</string>
+    <string name="DATA_LABLE">DATA FILES</string>
+    <string name="LINK_LABLE"> NETWORK LINKS</string>
+</resources>
