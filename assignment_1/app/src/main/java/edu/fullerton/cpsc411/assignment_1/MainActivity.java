@@ -2,15 +2,19 @@ package edu.fullerton.cpsc411.assignment_1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static java.lang.Math.PI;
 
-public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
-    String mib, mbps;
+
+public class MainActivity extends AppCompatActivity implements TextWatcher {
     TextView result;
-    EditText input1, input2 , output1;
+    EditText input1, input2 ;
+    Double mib, mbp, denominator, numerator, final_output;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,45 +24,53 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
         input1 = findViewById(R.id.mib_input);
         input2 = findViewById(R.id.mbps_input);
         result = findViewById(R.id.output);
-        result.setText("0");
 
-        mib = input1.getText().toString();
-        mbps = input2.getText().toString();
+        input1.addTextChangedListener(this);
+        input2.addTextChangedListener(this);
 
+        /*
         input1.setOnFocusChangeListener(this);
         input2.setOnFocusChangeListener(this);
+        */
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        result.setText("0");
 
     }
 
-    public void onFocusChange(View v, boolean hasFocus) {
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (!(input1.getText().toString()).equals("")  && !(input2.getText().toString()).equals("")  ) {
+            mib = Double.parseDouble(input1.getText().toString());
+            mbp = Double.parseDouble(input2.getText().toString());
 
-        if (!hasFocus) {
+            numerator = (mib * Math.pow(2, 20) * 8);
+            denominator = (mbp * Math.pow(10, 6));
+            final_output = (numerator / denominator);
+            result.setText(roundOff(final_output).toString()+ "Seconds");
+        }
 
-
+        else{
             result.setText("0");
+
         }
-        if (hasFocus ) {
 
-            if (!(input1.getText().toString()).equals("") ) {
-                Double mib1 = Double.parseDouble(input1.getText().toString());
-                Double numerator = (mib1 * Math.pow(2, 20) * 8);
-
-            }else if(!(input2.getText().toString()).equals("")) {
-                Double mbps1 = Double.parseDouble(input2.getText().toString());
-                Double denominator = (mbps1 * Math.pow(10, 6));
-            }
-
-            else{
-                result.setText("inprocess");
-
-            }
-            Double numerator = (mib1 * Math.pow(2, 20) * 8);
-            Double denominator = (mbps1 * Math.pow(10, 6));
-            Double final_output = (numerator / denominator);
-
-
-            result.setText(final_output.toString());
-        }
     }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    String roundOff(Double final_output) {
+
+        return String.format("%.1f", final_output);
+
+    }
+
+
+
 
 }

@@ -14,7 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
-        android:text="Hello World!"
+        android:text="@string/Output_lable"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -34,11 +34,12 @@
         android:id="@+id/mib_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="44dp"
         android:ems="10"
-        android:hint="Input MiB Size"
+        android:hint="@string/hint1"
         android:inputType="numberDecimal"
+        android:text="@string/input1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,8 +50,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
         android:ems="10"
-        android:hint="Input Mbps Size"
+        android:hint="@string/hint2"
         android:inputType="numberDecimal"
+        android:text="@string/input2"
         app:layout_constraintEnd_toEndOf="@+id/mib_input"
         app:layout_constraintTop_toBottomOf="@+id/mib_input" />
 
@@ -62,5 +64,23 @@
         android:text="@string/DATA_LABLE"
         app:layout_constraintBaseline_toBaselineOf="@+id/mib_input"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="linklable,datalable"
+        tools:layout_editor_absoluteX="384dp"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="linklable,datalable"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="511dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,4 +2,9 @@
     <string name="app_name">assignment_1</string>
     <string name="DATA_LABLE">DATA FILES</string>
     <string name="LINK_LABLE"> NETWORK LINKS</string>
+    <string name="input1" />
+    <string name="input2" />
+    <string name="hint1">Input Files In Mib</string>
+    <string name="hint2">Input Links In Mbps</string>
+    <string name="Output_lable">0</string>
 </resources>
