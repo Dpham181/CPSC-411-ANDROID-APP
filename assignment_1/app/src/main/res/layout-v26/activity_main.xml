@@ -42,7 +42,7 @@
         android:text="@string/input1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="Autofill" />
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/mbps_input"
@@ -56,7 +56,7 @@
         android:text="@string/input2"
         app:layout_constraintEnd_toEndOf="@+id/mib_input"
         app:layout_constraintTop_toBottomOf="@+id/mib_input"
-        tools:ignore="Autofill" />
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/datalable"

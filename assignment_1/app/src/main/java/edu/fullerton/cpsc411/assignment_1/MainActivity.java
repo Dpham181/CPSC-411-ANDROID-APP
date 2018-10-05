@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import static java.lang.Math.PI;
+import static java.util.Locale.US;
 
 
 public class MainActivity extends AppCompatActivity implements TextWatcher {
@@ -28,10 +29,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         input1.addTextChangedListener(this);
         input2.addTextChangedListener(this);
 
-        /*
-        input1.setOnFocusChangeListener(this);
-        input2.setOnFocusChangeListener(this);
-        */
+
     }
 
     @Override
@@ -43,19 +41,21 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (!(input1.getText().toString()).equals("")  && !(input2.getText().toString()).equals("")  ) {
-            mib = Double.parseDouble(input1.getText().toString());
-            mbp = Double.parseDouble(input2.getText().toString());
+            mib = Double.valueOf(input1.getText().toString());
+            mbp = Double.valueOf(input2.getText().toString());
 
             numerator = (mib * Math.pow(2, 20) * 8);
             denominator = (mbp * Math.pow(10, 6));
             final_output = (numerator / denominator);
-            result.setText(roundOff(final_output).toString()+ "Seconds");
+            String f = roundOff(final_output).toString()+ " Seconds";
+            result.setText(f);
         }
 
-        else{
+        else {
             result.setText("0");
-
         }
+
+
 
     }
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
 
     String roundOff(Double final_output) {
 
-        return String.format("%.1f", final_output);
+        return String.format(US,"%.1f", final_output);
 
     }
 
