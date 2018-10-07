@@ -15,7 +15,7 @@ import static java.util.Locale.US;
 public class MainActivity extends AppCompatActivity implements TextWatcher {
     TextView result;
     EditText input1, input2 ;
-    Double mib, mbp, denominator, numerator, final_output;
+    Double  final_output;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,20 +34,19 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        result.setText("0");
 
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (!(input1.getText().toString()).equals("")  && !(input2.getText().toString()).equals("")  ) {
-            mib = Double.valueOf(input1.getText().toString());
-            mbp = Double.valueOf(input2.getText().toString());
 
-            numerator = (mib * Math.pow(2, 20) * 8);
-            denominator = (mbp * Math.pow(10, 6));
-            final_output = (numerator / denominator);
+
+        if (!(input1.getText().toString()).equals("")  && !(input2.getText().toString()).equals("")  ) {
+
+            final_output =cal(Double.valueOf(input1.getText().toString()), Double.valueOf(input2.getText().toString()));
+
             String f = roundOff(final_output).toString()+ " Seconds";
+
             result.setText(f);
         }
 
@@ -62,6 +61,11 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    Double cal (Double mib , Double mbp){
+
+        return (mib * Math.pow(2, 20) * 8) / (mbp * Math.pow(10, 6)) ;
     }
 
     String roundOff(Double final_output) {
