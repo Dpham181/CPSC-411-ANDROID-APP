@@ -1,0 +1,61 @@
+package edu.fullerton.cpsc411.assignment_1
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
+
+
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.Locale.US
+
+
+internal fun cal(mib: Double?, mbp: Double?): Double? {
+
+    return mib!! * Math.pow(2.0, 20.0) * 8.0 / (mbp!! * Math.pow(10.0, 6.0))
+}
+
+internal fun roundOff(final_output: Double?): String {
+
+    return String.format(US, "%.1f", final_output)
+
+}
+class MainActivity : AppCompatActivity() {
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+
+        mbps_input.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (mib_input.text.toString() != "" && mbps_input.text.toString() != "") {
+
+                    val final_output = cal(java.lang.Double.valueOf(mib_input.text.toString()), java.lang.Double.valueOf(mbps_input.text.toString()))
+
+                    val f = roundOff(final_output) + " Seconds"
+
+                    output.text = f
+                } else {
+                    output.text = "0"
+                }
+            }
+
+
+        })
+
+
+
+
+    }
+}
