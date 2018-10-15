@@ -1,4 +1,4 @@
-package edu.fullerton.cpsc411.assignment_1
+package edu.fullerton.cpsc411.assignment_2
 
 import org.junit.Test
 

@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "edu.fullerton.cpsc411.assignment_1"
+        applicationId "edu.fullerton.cpsc411.assignment_2"
         minSdkVersion 22
         targetSdkVersion 28
         versionCode 1

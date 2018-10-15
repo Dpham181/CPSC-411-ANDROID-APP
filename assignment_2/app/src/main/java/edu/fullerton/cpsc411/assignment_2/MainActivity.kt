@@ -1,4 +1,4 @@
-package edu.fullerton.cpsc411.assignment_1
+package edu.fullerton.cpsc411.assignment_2
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
